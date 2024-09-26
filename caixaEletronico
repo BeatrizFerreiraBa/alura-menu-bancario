@@ -1,0 +1,56 @@
+package caixaEletronico;
+
+import java.util.Scanner;
+
+public class ClienteCaixa {
+
+	public static void main(String[] args) {
+		String nome = "Beatriz Ferreira";
+		Double saldo=2500.00;
+		String tipoConta="Corrente";
+		int operacao=0;
+		
+		
+		System.out.println("************************");
+		System.out.println("\n Nome do cliente:" + nome);
+		System.out.println("\n Tipo de conta:" + tipoConta);
+		System.out.println("\n Saldo atual:" + saldo);
+		System.out.println("\n ************************");
+		
+		  String menu="""
+			Operações:
+			1- Consultar saldos
+			2- Transferir valor
+			3- Receber valor
+			4- Sair
+				""";
+		  
+		Scanner scanner=new Scanner(System.in);
+		
+		while(operacao !=4) {
+			System.out.println(menu);
+			operacao=scanner.nextInt();
+		
+		
+		if (operacao == 1) {
+			System.out.println("O saldo atualizado é :" +saldo);
+		}else if (operacao ==2) {
+			System.out.println("Qual o valor que deseja transferir");
+			double valor=scanner.nextDouble();
+			if (valor > saldo) {
+				System.out.println("Não há saldo suficiente para a transferência");
+			}else {
+				saldo -=valor;
+				System.out.println("Novo saldo: " + saldo);
+				}
+			}else if (operacao ==3) {
+				System.out.println("Valor recebido: ");
+				double valor=scanner.nextDouble();
+				saldo +=valor;
+				System.out.println("Novo saldo: " +saldo);
+			}else if (operacao !=4) {
+				System.out.println("Opção invalida!");
+		}
+    }
+  }
+}
